@@ -13,7 +13,8 @@ Comment.init(
             onDelete: 'CASCADE',
         }, 
         comment: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
+            defaultValue: '',
             allowNull: false,
         },
         user_name: {
@@ -38,7 +39,7 @@ Comment.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'comment',
     }
 );
 
