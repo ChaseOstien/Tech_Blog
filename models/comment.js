@@ -17,12 +17,12 @@ Comment.init(
             defaultValue: '',
             allowNull: false,
         },
-        user_name: {
-            type: DataTypes.STRING,
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'username'
+                key: 'id'
             },
         },
         post_id: {
