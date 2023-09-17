@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../../public/css/jass.css">
+</head>
+
+<body>
+<header class="display-flex justify-space-between align-center p-2">
+    {{#if !logged_in}}
+    <nav>
+        <button class="btn" id="homeBtn">Home</button>
+        <button class="btn" id="dashboardBtn">Dashboard</button>
+        <button class="btn" id="login">Login</button>
+        {{else}}
+        <button class="btn" id="homeBtn">Home</button>
+        <button class="btn" id="dashboardBtn">Dashboard</button>
+        <button class="btn" id="logout">Logout</button>
+    </nav>
+    <h1>The Tech Blog</h1>
+</header>
+{{#each posts as |post| }}
+<div class="row align-center mb-5">
+    <div class="row">
+        <h3> {{post.title}}</h3>
+        <p>Posted by {{post.user_name}} on {{post.created_at}}</p>
+    </div>
+    <div class="row">
+        <p>{{post.contents}}</p>
+    </div>
+</div>
+{{/each}}
+</body>
+</html>
