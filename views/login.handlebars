@@ -1,20 +1,15 @@
-
-<div class="row align-center mb-5">
-<h2>Login</h2>
-<form class="form login-form">
-  <div class="form-group">
+<div class="card">
+<h3>Login</h3>
+<form class="form card-body" id="login-form">
     <label for="username-login">Username:</label>
-    <input class="form-input" type="text" id="username-login" />
-  </div>
-  <div class="form-group">
+    <input class="form-input" type="text" id="username-login" autofocus="true" />
+  
     <label for="password-login">Password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
+    <input class="form-input" type="password" id="password-login" autofocus="true" />
+  
     <button class="btn btn-primary" type="submit">login</button>
-  </div>
-  <div class="form-group"><a href="/signup">Sign up Instead</a></div>
+    <a href="/signup">Sign up Instead</a>
 </form>
 </div>
 
-<script src="../public/js/login.js"></script>
+<script src="/public/js/login.js"></script>
