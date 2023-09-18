@@ -1,0 +1,17 @@
+
+{{#if posts.length}}
+    <section>
+    <h1>Your Dashboard</h1>
+
+{{#each posts as |post|}}
+    {{> posts-overview post}}
+{{/each}}
+</section>
+
+<footer>
+    <button class="btn btn-primary" id="newPostButton" type="submit"><a href="/dashboard/new">+ New Post</a></button>
+</footer>
+
+<script src="/public/js/newPost.js"></script>
+{{#if logged_in}}
+<script src="../../public/js/logout.js"></script>
