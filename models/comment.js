@@ -12,7 +12,7 @@ Comment.init(
             autoIncrement: true,
             onDelete: 'CASCADE',
         }, 
-        comment: {
+        comment_text: {
             type: DataTypes.STRING,
             defaultValue: '',
             allowNull: false,
