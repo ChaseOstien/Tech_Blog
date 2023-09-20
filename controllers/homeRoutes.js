@@ -1,0 +1,106 @@
+const sequelize = require('../config/connection');
+const { User, Post, Comment } = require('../models');
+const router = require('express').Router();
+
+// Get all users, posts and comments for homepage.
+router.get('/', async (req, res) => {
+    try {
+        const getPosts = await Post.findAll({
+            attributes: [
+                    id, 
+                    title, 
+                    contents,
+                    created_at,
+            ], 
+            include: [
+            {
+                model: Comment,
+                attributes: [ id, comment_text, user_id, post_id, created_at ], 
+                    include: {
+                        model: 'user', 
+                        attributes: [ username ],
+                    },
+                },
+                {
+                    model: User,
+                    attributes: [ username ],
+                },
+            ]
+        });
+
+    const posts = getPosts.map(post => post.get({ plain: true }));
+        res.render('homepage', {
+            posts, 
+            LoggedIn: req.session.logged_in,
+        });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// Redirect to homepage once logged in. 
+router.get('/login', (req, res) => {
+    if(req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
+
+// Redirect to homepage once a user signs up
+router.get('/signup', (req, res) => {
+    res.render('homepage');
+});
+
+// Loads selected post and any comments associated with that post. 
+router.get('/post/:id', async (req, res) => {
+    try {
+        const getPost = await Post.findOne({
+            where: {
+                id: req.params.id,
+            },
+            attributes: [
+                id,
+                title, 
+                contents,
+                created_at,
+            ],
+            include: [
+                {
+                model: Comment,
+                attributes: [ id, comment_text, user_id, post_id, created_at ],
+                    include: {
+                        model: 'user',
+                        attributes: [ username ],
+                    }
+                },
+                {
+                    model: User,
+                    attributes: [ username ],
+                },
+            ]
+        });
+
+        if (!getPost) {
+            res.status(404).json({ message: 'No post with that id!'});
+            return;
+        }
+
+        const post = getPost.get({ plain: true });
+            res.render('single-post', {
+                post,
+                LoggedIn: req.session.logged_in,
+            });
+        }
+            catch (err) {
+                console.log(err);
+                res.status(500).json(err);
+            }   
+});
+
+module.exports = router;
+
+
