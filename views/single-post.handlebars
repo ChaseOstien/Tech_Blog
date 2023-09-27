@@ -1,8 +1,8 @@
-{{> post-details post}}
+{{> posts-details post}}
 
 {{#if logged_in}}
 <div class="card">
-    h3 class="card-header"></h3>
+    <h3 class="card-header"></h3>
     <form class="card-body comment-form" id="comment-form">
 
         <label class="form-label">Comment</label>
@@ -13,8 +13,8 @@
 </div>
 {{/if}}
 
-{{> comment post.comment}}
+{{> comment post.comments}}
 
 {{#if logged_in}}
-<script src="/public/js/comment.js"></script>
+<script src="/js/comment.js"></script>
 {{/if}}
