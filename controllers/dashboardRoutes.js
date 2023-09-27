@@ -11,23 +11,23 @@ router.get('/', withAuth, async (req, res) => {
                 user_id: req.session.user_id,
             },
             attributes: [
-                id,
-                title,
-                contents,
-                created_at,
+                'id',
+                'title',
+                'contents',
+                'created_at',
             ],
             include: [
                 {
                     model: Comment,
-                    attributes: [ id, comment_text, user_id, post_id, created_at ],
+                    attributes: [ 'id', 'comment_text', 'user_id', 'post_id', 'created_at' ],
                         include: {
-                            model: 'user',
-                            attributes: [ username ],
+                            model: User,
+                            attributes: [ 'username' ],
                         }
                 },
                 {
                     model: User,
-                    attributes: [ username ],
+                    attributes: [ 'username' ],
                 },
             ]
         });
@@ -35,7 +35,7 @@ router.get('/', withAuth, async (req, res) => {
         const posts = getDashboard.map(post => post.get({ plain: true }));
         res.render('dashboard', {
             posts,
-            loggedIn: true,
+            logged_in: true,
         });
     }
         catch (err) {
@@ -46,30 +46,30 @@ router.get('/', withAuth, async (req, res) => {
 
 
 // Dashboard Get request for edit post view.
-router.get('edit/:id', withAuth, async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
     try {
         const getPost = await Post.findOne({
             where: {
                 id: req.params.id,
             },
             attributes: [
-                id,
-                title, 
-                contents,
-                created_at,
+                'id',
+                'title', 
+                'contents',
+                'created_at',
             ],
             include: [
                 {
                 model: Comment,
-                attributes: [ id, comment_text, user_id, post_id, created_at ],
+                attributes: [ 'id', 'comment_text', 'user_id', 'post_id', 'created_at' ],
                     include: {
-                        model: 'user',
-                        attributes: [ username ],
+                        model: User,
+                        attributes: [ 'username' ],
                     }
                 },
                 {
                     model: User,
-                    attributes: [ username ],
+                    attributes: [ 'username' ],
                 },
             ]
         });
@@ -82,7 +82,7 @@ router.get('edit/:id', withAuth, async (req, res) => {
         const post = getPost.get({ plain: true });
             res.render('edit-post', {
                 post,
-                LoggedIn: req.session.logged_in,
+                logged_in: true,
             });
     }
     catch (err) {
@@ -91,8 +91,8 @@ router.get('edit/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/signup', async (req, res) => {
-    res.render('dashboard');
+router.get('/new', (req, res) => {
+    res.render('newPost');
 });
 
 module.exports = router;

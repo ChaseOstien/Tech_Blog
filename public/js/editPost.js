@@ -1,8 +1,8 @@
 const editFormHandler = async (event) => {
     event.preventDefault();
-
-    const title = document.querySelector('input[name="post-title"]').value.trim();
-    const content = document.querySelector('input[name="content"]').value.trim();
+    console.log('updated');
+    const title = document.querySelector('input[name="title"]').value.trim();
+    const contents = document.querySelector('input[name="contents"]').value.trim();
 
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
@@ -13,15 +13,15 @@ const editFormHandler = async (event) => {
         body: JSON.stringify({
             post_id: id,
             title,
-            content
+            contents
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     });
-
+        
         if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/dashboard');
         } else {
         alert(response.statusText);
     }
