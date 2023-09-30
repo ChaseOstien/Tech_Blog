@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="/css/jass.css">
 </head>
 
-<body>
+<body class="flex-column min-100-vh">
     <div class="wrapper">
-<header class="display-flex justify-space-between align-center p-2">
+<header class="header">
     <div class="nav">
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
+        <a href="/" class="link nav-item">Home</a>
+        <a class="link nav-item " href="/dashboard">Dashboard</a>
         {{#if logged_in}}
-        <a href="/" id="logout">Logout</a>
+        <a class="link nav-item" href="/" id="logout">Logout</a>
         {{else}}
-        <a href="/login" id="login">Login</a>
+        <a class="link nav-item" href="/login" id="login">Login</a>
         {{/if}}
     </div>
+
+  <h1><a class="app-title" href="/">The Tech Blog</a></h1>
 </header>
 
 <main>
