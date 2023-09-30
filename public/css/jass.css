@@ -59,6 +59,7 @@
   
   p {
     font-size: 1.2rem;
+    margin: 0;
   }
   
    .btn {
@@ -111,8 +112,8 @@
     box-shadow: 2px 2px var(--dark);
   }
   
-  .hero {
-    padding: 3% 4%;
+  .header {
+    padding: 1% 4%;
     background-color: var(--dark);
     color: var(--primary);
   }
@@ -126,9 +127,29 @@
     background-color: var(--primary);
     color: var(--dark);
     padding: 0 10px;
+    margin-bottom: 15px;
     display: inline-block;
     border-radius: var(--border-radius);
     box-shadow: 6px 5px var(--light-dark);
+    text-decoration: none;
+  }
+
+  .dashboard-title {
+    font-size: 3rem;
+    background-color: var(--dark);
+    color: var(--primary);
+    padding: 0 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    border-radius: var(--border-radius);
+    max-width: fit-content;
+    text-decoration: none;
+    justify-content: center;
+  }
+
+  .sub-header {
+    border-bottom: 3px solid #ccc;
+    margin-bottom: 15px;
   }
   
   .list-group {
@@ -176,6 +197,7 @@
     background-color: var(--dark);
     padding: 1%;
     border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+    display: flex;
   }
   
   .card-body {
@@ -191,15 +213,28 @@
 
   .link {
       color: var(--primary);
+      text-decoration: none;
   }
 
   .login-link {
     color: var(--dark);
 }
 
+.signup-instead {
+  text-decoration: none;
+}
+
   .nav {
       padding: 10px;
+      padding-bottom: 40px;
       line-height: 1.25;
+  }
+  .nav-item {
+    margin: 30px;
+  }
+
+  .nav-item.active {
+    font-weight: bold;
   }
 
 
@@ -209,6 +244,16 @@
     justify-content: center;
     padding: 1%;
     font-size: 110%;
+  }
+
+  .footer a {
+    display: inline-block;
+    padding: .5em;
+    margin-bottom: 0.5em;
+    background-color: var(--dark);
+    color: var(--primary);
+    border-radius: var(--border-radius);
+    text-decoration: none;
   }
 
   /* FORM */
@@ -225,7 +270,7 @@
   
   .form-input {
     width: 100%;
-    padding: 3%;
+    padding: 1%;
     margin: 5px 0;
     font-size: 1.2rem;
     border: 2px solid var(--light-dark);

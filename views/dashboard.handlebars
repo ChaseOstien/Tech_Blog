@@ -1,4 +1,6 @@
-<h1><a href="/dashboard">Your Dashboard</a></h1>
+<div class="flex-row justify-center sub-header">
+<h1 class=""> <a class="dashboard-title" href="/">Your Dashboard</a></h1>
+</div>
 {{#if posts.length}}
     <section>
 
@@ -7,8 +9,8 @@
 {{/each}}
 </section>
 {{/if}}
-<footer>
-    <a class="link" href="/dashboard/new"> <button class="btn btn-primary" id="newPostButton" type="submit">+ New Post</button></a>
+<footer class="footer flex-row justify-center">
+    <a class="" href="/dashboard/new">+ New Post</a>
 </footer>
 
 
